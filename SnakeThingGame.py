@@ -24,6 +24,7 @@ gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
+food = []
 
 class snake_head:
 	pos = [0, 0]
@@ -53,13 +54,21 @@ class snake_head:
 
 
 class food:
+	
+	
 	pos = [0, 0]
 	direction = 0
 	size = 0
 	colour = (255, 0, 0)
 	
-def draw_food:
-
+def draw_food(self, color = red):
+	self.pos[0] = random.randint(left_wall, right_wall)
+	self.pos[1] = random.randint(top_wall, bottom_wall)
+	self. colour = color
+	food.append(self.pos[0], self.pos[1])
+	print food
+	
+	
 
 
 
