@@ -87,8 +87,15 @@ snake = snake_head(20)
 class store:
 
 def prompt_purchase(score, price)
-	if score >= price 
+	pygame.mouse.get_pos()
+	if global score >= price and pygame.mouse.get_pressed()[0]:
 		score += -price
+		return "add a snake"
+	else:
+		return "Not enough cash"
+		
+		
+		
 		
 """
 
