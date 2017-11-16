@@ -12,7 +12,7 @@ display_height = 1000
 display_width  = 1000
 
 #change to speed up of slow down game
-fps = 45
+fps = 10
 
 top_wall = 0
 bottom_wall = 1000
@@ -41,6 +41,15 @@ class snake_head:
 	def move(self, distance):
 		self.pos[0] += int(distance * math.sin(math.radians(self.direction)))
 		self.pos[1] += int(distance * math.cos(math.radians(self.direction)))
+		
+		self.direction += random.randint(-15, 15)
+		self.direction % 360
+		
+		if self.pos[1] < top_wall or self.pos[1] > bottom_wall:
+			self.direction += 180
+		if self.pos[0] < left_wall or self.pos[0] > right_wall:
+			self.direction += 180
+		
 		self.food_check()
 
 	def food_check(self):
@@ -57,8 +66,9 @@ class snake_head:
 
 def Draw():
 	gameDisplay.fill(white)
-	print(snake.pos)
-	print(snake.size)
+	
+	#pygame.draw.line(gameDisplay, black, (top_wall
+	
 	pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
 
 	#draw things here
@@ -69,6 +79,7 @@ def Draw():
 def Logic():
 	#move snakes, eat food etc
 	snake.move(10)
+	
 
 def Take_Input():
 	global crashed
@@ -81,7 +92,9 @@ def Take_Input():
 			if event.key == pygame.K_SPACE:
 				Print("keys work")
 				
-snake = snake_head(20)
+snake = snake_head(5)
+snake.direction = 45
+snake.pos = [500, 500]
 
 """
 class store:
