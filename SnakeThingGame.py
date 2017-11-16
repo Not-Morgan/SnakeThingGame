@@ -1,5 +1,6 @@
 import pygame
 import random
+import Image 
 from math import cos
 from math import sin
 
@@ -83,6 +84,12 @@ def Take_Input():
 				Print("keys work")
 				
 snake = snake_head(20)
+
+#class store
+"""
+def prompt_purchase()
+	if 
+"""
 
 while not crashed:
 	Draw()
