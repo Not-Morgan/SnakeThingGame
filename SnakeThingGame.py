@@ -1,6 +1,7 @@
 import pygame
 import random
-import math
+from math import cos
+from math import sin
 
 white = (255, 255, 255)
 black = (0,   0,     0)
@@ -39,13 +40,14 @@ class snake_head:
 		self.pos[1] = random.randint(top_wall, bottom_wall)
 
 	def move(self, distance):
-		self.pos[0] += round(distance * math.sin(math.radians(self.direction)), 0)
-		self.pos[1] += round(distance * math.cos(math.radians(self.direction)), 0)
+		self.pos[0] += round(distance * sin(radians(self.direction)), 0)
+		self.pos[1] += round(distance * cos(radians(self.direction)), 0)
 		self.food_check()
 
 	def food_check(self):
 		if 1 == 2:
 			print("panic")
+			#what is this
 
 
 #class snake_tail:
