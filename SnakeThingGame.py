@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 white = (255, 255, 255)
 black = (0,   0,     0)
@@ -24,34 +25,40 @@ pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
 
-class snake:
+class snake_head:
 	pos = [0, 0]
 	direction = 0
 	size = 0
 	length = 0
 	colour = (0, 0, 0)
 
-	def __init__(self, size, color):
+	def __init__(self, size, color = green):
 		self.size = size
 		self.colour = color
 		self.pos[0] = random.randint(left_wall, right_wall)
 		self.pos[1] = random.randint(top_wall, bottom_wall)
 
 	def move(self, distance):
-		#some fancy trigonomentry goes here
+		self.pos[0] += round(distance * math.sin(math.radians(self.direction)), 0)
+		self.pos[1] += round(distance * math.cos(math.radians(self.direction)), 0)
+		self.food_check()
 
-		def food_check():
-			#checks for food if it's there do stuff
+	def food_check(self):
+		if 1 == 2:
+			print("panic")
 
 
-class snake_tail:
+#class snake_tail:
 
 
-class food:
+#class food:
 
 
 def Draw():
 	gameDisplay.fill(white)
+	print(snake.pos)
+	print(snake.size)
+	pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
 
 	#draw things here
 
@@ -60,6 +67,7 @@ def Draw():
 
 def Logic():
 	#move snakes, eat food etc
+	snake.move(10)
 
 def Take_Input():
 	global crashed
@@ -69,8 +77,10 @@ def Take_Input():
 			crashed = True
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_ #key name
+			if event.key == pygame.K_SPACE:
+				Print("keys work")
 				
+snake = snake_head(20)
 
 while not crashed:
 	Draw()
