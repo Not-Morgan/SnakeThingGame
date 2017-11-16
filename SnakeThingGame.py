@@ -19,6 +19,8 @@ bottom_wall = 1000
 left_wall = 0
 right_wall = 1000
 
+snake_heads = [snake_head(5)]
+
 pygame.init()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Snake Thing Game')
@@ -29,8 +31,9 @@ class snake_head:
 	pos = [0, 0]
 	direction = 0
 	size = 0
-	length = 0
+	length = 1
 	colour = (0, 0, 0)
+	tails = []
 
 	def __init__(self, size, color = green):
 		self.size = size
@@ -49,6 +52,8 @@ class snake_head:
 			self.direction += 180
 		if self.pos[0] < left_wall or self.pos[0] > right_wall:
 			self.direction += 180
+			
+		tails.append(snake_tail(self.pos, self.colour, self.size, length)
 		
 		self.food_check()
 
@@ -56,10 +61,31 @@ class snake_head:
 		if 1 == 2:
 			print("panic")
 			#what is this
+	
+	def tail_check(self):
+		for tail in tails:
+			if tail.check_if_dead() = True:
+				tails.remove(tail)
+				
 
 
-#class snake_tail:
-
+class snake_tail:
+	pos = [0, 0]
+	colour = (0, 0, 0)
+	size = 0
+	last_time = 0
+	created_time = pygame.get_ticks()
+	
+	def __init__(self, snake_head_pos, colour, size, last_time):
+		self.pos = snake_head_pos
+		self.colour = colour
+		self.size = size
+		self.last_time = last_time
+	
+	def check_if_dead(self)
+		if pygame.get_ticks() > created_time + last_time:
+			return True
+		
 
 #class food:
 
@@ -92,9 +118,7 @@ def Take_Input():
 			if event.key == pygame.K_SPACE:
 				Print("keys work")
 				
-snake = snake_head(5)
-snake.direction = 45
-snake.pos = [500, 500]
+
 
 """
 class store:
