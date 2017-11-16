@@ -75,6 +75,9 @@ def draw_food(self, color = red):
 	self.pos[1] = random.randint(top_wall, bottom_wall)
 	self. colour = color
 	food.append(self.pos[0], self.pos[1])
+	
+	
+	
 	print food
 	
 	
@@ -87,6 +90,8 @@ def Draw():
 	#pygame.draw.line(gameDisplay, black, (top_wall
 	
 	pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
+	
+	pygame.draw.circle(gameDisplay, red, food.pos, 5, 0)
 
 	#draw things here
 
