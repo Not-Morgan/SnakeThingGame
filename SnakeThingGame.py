@@ -52,7 +52,15 @@ class snake_head:
 #class snake_tail:
 
 
-#class food:
+class food:
+	pos = [0, 0]
+	direction = 0
+	size = 0
+	colour = (255, 0, 0)
+	
+def draw_food:
+
+
 
 
 def Draw():
