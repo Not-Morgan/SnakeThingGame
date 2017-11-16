@@ -1,6 +1,7 @@
 import pygame
 import random 
 import math
+import store
 
 white = (255, 255, 255)
 black = (0,   0,     0)
@@ -19,14 +20,14 @@ bottom_wall = 1000
 left_wall = 0
 right_wall = 1000
 
-snake_heads = [snake_head(5)]
-
 pygame.init()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
-food = []
+
+snake_heads = [snake_head(5)]
+foods = []
 
 class snake_head:
 	pos = [0, 0]
@@ -89,12 +90,12 @@ class snake_tail:
 		
 
 class food:
-	
-	
 	pos = [0, 0]
-	direction = 0
-	size = 0
-	colour = (255, 0, 0)
+	size = 6
+	colour = red
+	def __init__(self):
+		self.pos[0] = random.randint(left_wall, right_wall)
+		self.pos[1] = random.randint(top_wall, bottom_wall)
 	
 def draw_food(self, color = red):
 	self.pos[0] = random.randint(left_wall, right_wall)
@@ -115,11 +116,13 @@ def Draw():
 	
 	#pygame.draw.line(gameDisplay, black, (top_wall
 	
-	pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
+	for snake in snake_heads:
+			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
 	
-	pygame.draw.circle(gameDisplay, red, food.pos, 5, 0)
-
 	#draw things here
+	
+	for food in foods:
+		pygame.draw.circle(gameDisplay, food.colour, food.pos, 5, 0)
 
 	pygame.display.update()
 	clock.tick(fps)
