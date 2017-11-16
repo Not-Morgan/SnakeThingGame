@@ -85,10 +85,13 @@ def Take_Input():
 				
 snake = snake_head(20)
 
-#class store
 """
-def prompt_purchase()
-	if 
+class store:
+
+def prompt_purchase(score, price)
+	if score >= price 
+		score += -price
+		
 """
 
 while not crashed:
