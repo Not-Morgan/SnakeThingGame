@@ -29,7 +29,7 @@ crashed = False
 
 class snake_head:
 	direction = 0
-	length = 1
+	length = 1000
 	tails = []
 
 	def __init__(self, size, color = green):
@@ -56,6 +56,7 @@ class snake_head:
 		#create a new tail segment
 		self.tails.append(snake_tail(self.pos, self.length))
 		
+		self.tail_check()
 		self.food_check()
 
 
@@ -66,14 +67,14 @@ class snake_head:
 	
 	def tail_check(self):
 		for tail in self.tails:
-			if self.tail.check_if_dead() == True:
+			if tail.check_if_dead() == True:
 				self.tails.remove(tail)
 				
 
 
 class snake_tail:
 	def __init__(self, snake_head_pos, last_time):
-		created_time = pygame.time.get_ticks()
+		self.created_time = pygame.time.get_ticks()
 		self.pos = snake_head_pos
 		self.last_time = last_time
 	
@@ -114,6 +115,8 @@ def Draw():
 	
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
+			for tail in snake.tails:
+				pygame.draw.circle(gameDisplay, green, tail.pos, snake.size, 0)
 	
 	for food in foods:
 		pygame.draw.circle(gameDisplay, food.colour, food.pos, 5, 0)
@@ -136,7 +139,7 @@ def Take_Input():
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
-				Print("keys work")
+				print(len(snakes[0].tails))
 				
 
 
@@ -156,7 +159,7 @@ def prompt_purchase(score, price)
 		
 """
 
-snakes = [snake_head(5)]
+snakes = [snake_head(5), snake_head(5)]
 foods = [food(5)]
 
 while not crashed:
