@@ -1,31 +1,31 @@
 # import Image
 
-GameOn = True
+Crashed = GameOn
 purchase = False
 
 score = 0
 priceofsnake = 100
 priceofsupersnake = 1000
 
+def purchase(score, type)
+	"""define purchase neccessary?"""
+
 
 while GameOn:
-    if score > priceofsnake:
-        GameOn = False
+    if score > priceofsnake and True"""Replace with mouse click""":
         print "Would you like to buy a snake?"
-        purchase = raw_input ("> ")
-        if purchase == "Y" or "Yes" or "Yea" or "Si" or "go" or "Aye" or "Sure":
-            # Add a snake
         
-    if score > priceofsupersnake:
-        GameOn = False
+            # Add a snake
+			score -= priceofsnake
+			
+        
+    if score > priceofsupersnake and True """Replace with mouse click""":
         print "Would you like to buy a supersnake?"
-        purchase = raw_input ("> ")
-        if purchase == "Y" or "Yes" or "Yea" or "Si" or "go" or "Aye" or "Sure":
+			if """ yes button clicked""" True:
             # Add a supersnake
+			score -= priceofsupersnake
 
 
 
 
-# import Image    
-# image = Image.open('Test.jpg')
-# image.show()
+
