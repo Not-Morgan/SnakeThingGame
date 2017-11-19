@@ -2,13 +2,13 @@
 TO DO List:
 
 -layout file (done)
--make snake head move
--make snake tail
+-make snake head move (done)
+-make snake tail (done)
 -walls that repel the snakes
 -food for them to eat
 -money score counter
--press-ey buttons to buy things
--buy more space
+-press-ey buttons to buy things (done)
+-buy more space (maybe speed up the game instead?)
 -move with arrow keys zoom maybe
 -more types of snakes (prices increase exponentially)
 -realize vim is the superior editor (never)
