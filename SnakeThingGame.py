@@ -25,6 +25,7 @@ gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
+score = 0
 #set a score variable
 
 
@@ -97,7 +98,6 @@ class food:
 		self.colour = colour
 		self.size = size
 
-
 def DrawBorders():
 
         pygame.draw.line(gameDisplay, black, (left_wall, top_wall), (right_wall + 100, top_wall), 5)
@@ -112,9 +112,8 @@ def DrawBorders():
 def Draw():
 	gameDisplay.fill(white)
 	
-	score_count(gameDisplay, "score")
-
-	side_bar(gameDisplay, "score")
+	score_count(gameDisplay, score)
+	side_bar(gameDisplay, score)
  
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
@@ -133,7 +132,13 @@ def Logic():
 	#move snakes, eat food etc
 	for snake in snakes:
 		snake.move(3)
-	
+"""
+        for snake in snakes:
+                if snake.pos[0] in range(food.pos[0] + 5, food.pos[0] - 5) and snake.pos[1] in range(food.pos[1] + 5, food.pos[1] - 5)  <- can't find food.pos
+                        score += 1
+                        somehow reposition the food
+                        
+"""	
 
 def Take_Input():
 	global crashed

@@ -24,8 +24,6 @@ def side_bar(screen, score):
         button2_pos = [515, 200, 75, 50]
         text2 = font.render("Speed Up", True, black)
 
-        useless = 0
-
         
         mouse = pygame.mouse.get_pos()
         
@@ -34,6 +32,10 @@ def side_bar(screen, score):
                 screen.blit(text1,(button1_pos[0] + button1_pos[2]/3, button1_pos[1] + button1_pos[3]/3))
                 if pygame.mouse.get_pressed()[0]:
                         print("Add a Snake")
+                        
+                        
+                        
+
                               
                         
         else:
