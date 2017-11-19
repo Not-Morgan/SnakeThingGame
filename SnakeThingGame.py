@@ -7,8 +7,7 @@ black = (0,   0,     0)
 red   = (255, 0,     0)
 green = (0,   255,   0)
 blue  = (0,   0,   255)
-dim_red = (200,0,0)
-dim_green = (0,200,0)
+
 
 display_height = 500
 display_width  = 600
@@ -99,17 +98,23 @@ class food:
 		self.size = size
 
 
+def DrawBorders():
+
+        pygame.draw.line(gameDisplay, black, (left_wall, top_wall), (right_wall + 100, top_wall), 5)
+        pygame.draw.line(gameDisplay, black, (right_wall, top_wall), (right_wall, bottom_wall), 10)
+        pygame.draw.line(gameDisplay, black, (right_wall + 100, bottom_wall), (left_wall, bottom_wall), 5)
+        pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 5)
+        pygame.draw.line(gameDisplay, black, (right_wall + 100, top_wall), (right_wall + 100, bottom_wall), 5)
+
+        pygame.display.update()
+        
+
 def Draw():
 	gameDisplay.fill(white)
 	
-	pygame.draw.line(gameDisplay, black, (left_wall, top_wall), (right_wall + 100, top_wall), 5)
-	pygame.draw.line(gameDisplay, black, (right_wall, top_wall), (right_wall, bottom_wall), 10)
-	pygame.draw.line(gameDisplay, black, (right_wall + 100, bottom_wall), (left_wall, bottom_wall), 5)
-	pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 5)
-	pygame.draw.line(gameDisplay, black, (right_wall + 100, top_wall), (right_wall + 100, bottom_wall), 5)
-	
-	text = pygame.font.SysFont(None, 15).render("Score: "+str("score"), True, black)
-	gameDisplay.blit(text,(525, 50))
+	score_count(gameDisplay, "score")
+
+	side_bar(gameDisplay, "score")
  
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
@@ -152,6 +157,7 @@ foods = [food(5)]
 
 while not crashed:
 	Draw()
+	DrawBorders()
 	Logic()
 	Take_Input()
 
