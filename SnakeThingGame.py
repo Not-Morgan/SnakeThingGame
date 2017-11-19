@@ -1,16 +1,17 @@
 import pygame
 import random 
 import math
-#import store #commented out until josh fixes
-
+from store import *
 white = (255, 255, 255)
 black = (0,   0,     0)
 red   = (255, 0,     0)
 green = (0,   255,   0)
 blue  = (0,   0,   255)
+dim_red = (200,0,0)
+dim_green = (0,200,0)
 
 display_height = 500
-display_width  = 500
+display_width  = 600
 
 #change to speed up of slow down game
 fps = 30
@@ -18,13 +19,14 @@ fps = 30
 top_wall = 0
 bottom_wall = display_height
 left_wall = 0
-right_wall = display_width
+right_wall = display_width - 100
 
 pygame.init()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
+#set a score variable
 
 
 class snake_head:
@@ -64,6 +66,8 @@ class snake_head:
 		if 1 == 2:
 			print("panic")
 			#draw a new food
+			
+			
 	
 	def tail_check(self):
 		for tail in self.tails:
@@ -98,11 +102,15 @@ class food:
 def Draw():
 	gameDisplay.fill(white)
 	
-	pygame.draw.line(gameDisplay, black, (left_wall, top_wall), (right_wall, top_wall), 1)
-	pygame.draw.line(gameDisplay, black, (right_wall, top_wall), (right_wall, bottom_wall), 1)
-	pygame.draw.line(gameDisplay, black, (right_wall, bottom_wall), (left_wall, bottom_wall), 1)
-	pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 1)
+	pygame.draw.line(gameDisplay, black, (left_wall, top_wall), (right_wall + 100, top_wall), 5)
+	pygame.draw.line(gameDisplay, black, (right_wall, top_wall), (right_wall, bottom_wall), 10)
+	pygame.draw.line(gameDisplay, black, (right_wall + 100, bottom_wall), (left_wall, bottom_wall), 5)
+	pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 5)
+	pygame.draw.line(gameDisplay, black, (right_wall + 100, top_wall), (right_wall + 100, bottom_wall), 5)
 	
+	text = pygame.font.SysFont(None, 15).render("Score: "+str("score"), True, black)
+	gameDisplay.blit(text,(525, 50))
+ 
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
 			for tail in snake.tails:
@@ -110,6 +118,8 @@ def Draw():
 	
 	for food in foods:
 		pygame.draw.circle(gameDisplay, food.colour, food.pos, 5, 0)
+
+	
 
 	pygame.display.update()
 	clock.tick(fps)
@@ -136,22 +146,6 @@ def Take_Input():
 					print(tail.pos)
 				
 
-
-"""
-class store:
-
-def prompt_purchase(score, price)
-	pygame.mouse.get_pos()
-	if global score >= price and pygame.mouse.get_pressed()[0]:
-		score += -price
-		return "add a snake"
-	else:
-		return "Not enough cash"
-		
-		
-		
-		
-"""
 
 snakes = [snake_head(5)]
 foods = [food(5)]
