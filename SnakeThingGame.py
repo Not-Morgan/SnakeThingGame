@@ -13,7 +13,7 @@ display_height = 500
 display_width  = 500
 
 #change to speed up of slow down game
-fps = 10
+fps = 30
 
 top_wall = 0
 bottom_wall = display_height
@@ -75,12 +75,14 @@ class snake_head:
 class snake_tail:
 	def __init__(self, snake_head_pos, last_time):
 		self.created_time = pygame.time.get_ticks()
-		self.pos = snake_head_pos
+		#self.pos = snake_head_pos
+		self.pos = [0, 0]
+		self.pos[0] += snake_head_pos[0]
+		self.pos[1] += snake_head_pos[1]
 		self.last_time = last_time
 	
 	def check_if_dead(self):
 		if pygame.time.get_ticks() > self.created_time + self.last_time:
-			print("test")
 			return True
 		
 
@@ -115,7 +117,7 @@ def Draw():
 def Logic():
 	#move snakes, eat food etc
 	for snake in snakes:
-		snake.move(5)
+		snake.move(3)
 	
 
 def Take_Input():
