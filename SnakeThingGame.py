@@ -1,7 +1,7 @@
 import pygame
 import random 
 import math
-#import store
+#import store #commented out until josh fixes
 
 white = (255, 255, 255)
 black = (0,   0,     0)
@@ -127,7 +127,7 @@ def Draw():
 def Logic():
 	#move snakes, eat food etc
 	for snake in snakes:
-		snake.move(10)
+		snake.move(5)
 	
 
 def Take_Input():
@@ -139,7 +139,11 @@ def Take_Input():
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
-				print(len(snakes[0].tails))
+				print("---")
+				print(snakes[0].pos)
+				print("---")
+				for tail in snakes[0].tails:
+					print(tail.pos)
 				
 
 
