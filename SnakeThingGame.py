@@ -16,9 +16,9 @@ display_width  = 500
 fps = 10
 
 top_wall = 0
-bottom_wall = 500
+bottom_wall = display_height
 left_wall = 0
-right_wall = 500
+right_wall = display_width
 
 pygame.init()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
@@ -61,7 +61,7 @@ class snake_head:
 
 
 	def food_check(self):
-		if 1 == 2 """ snake_head.rect.colliderect(food.rect):""" :
+		if 1 == 2:
 			print("panic")
 			#draw a new food
 	
@@ -80,6 +80,7 @@ class snake_tail:
 	
 	def check_if_dead(self):
 		if pygame.time.get_ticks() > self.created_time + self.last_time:
+			print("test")
 			return True
 		
 
@@ -100,13 +101,10 @@ def Draw():
 	pygame.draw.line(gameDisplay, black, (right_wall, bottom_wall), (left_wall, bottom_wall), 1)
 	pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 1)
 	
-	
-	
-	
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
 			for tail in snake.tails:
-				pygame.draw.circle(gameDisplay, green, tail.pos, snake.size, 0)
+				pygame.draw.circle(gameDisplay, blue, tail.pos, snake.size, 0)
 	
 	for food in foods:
 		pygame.draw.circle(gameDisplay, food.colour, food.pos, 5, 0)
@@ -153,7 +151,7 @@ def prompt_purchase(score, price)
 		
 """
 
-snakes = [snake_head(5), snake_head(5)]
+snakes = [snake_head(5)]
 foods = [food(5)]
 
 while not crashed:
