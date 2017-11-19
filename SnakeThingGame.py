@@ -9,16 +9,16 @@ red   = (255, 0,     0)
 green = (0,   255,   0)
 blue  = (0,   0,   255)
 
-display_height = 1000
-display_width  = 1000
+display_height = 500
+display_width  = 500
 
 #change to speed up of slow down game
 fps = 10
 
 top_wall = 0
-bottom_wall = 1000
+bottom_wall = 500
 left_wall = 0
-right_wall = 1000
+right_wall = 500
 
 pygame.init()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
@@ -61,9 +61,9 @@ class snake_head:
 
 
 	def food_check(self):
-		if 1 == 2:
+		if 1 == 2 """ snake_head.rect.colliderect(food.rect):""" :
 			print("panic")
-			#what is this
+			#draw a new food
 	
 	def tail_check(self):
 		for tail in self.tails:
@@ -91,27 +91,17 @@ class food:
 		self.colour = colour
 		self.size = size
 
-'''
-what is this for it's not even in the class
-
-def draw_food(self, color = red):
-	self.pos[0] = random.randint(left_wall, right_wall)
-	self.pos[1] = random.randint(top_wall, bottom_wall)
-	self. colour = color
-	food.append(self.pos[0], self.pos[1])
-	
-	
-	
-	print food
-'''
-	
-
-
 
 def Draw():
 	gameDisplay.fill(white)
 	
-	#pygame.draw.line(gameDisplay, black, (top_wall
+	pygame.draw.line(gameDisplay, black, (left_wall, top_wall), (right_wall, top_wall), 1)
+	pygame.draw.line(gameDisplay, black, (right_wall, top_wall), (right_wall, bottom_wall), 1)
+	pygame.draw.line(gameDisplay, black, (right_wall, bottom_wall), (left_wall, bottom_wall), 1)
+	pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 1)
+	
+	
+	
 	
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
