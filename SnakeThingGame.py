@@ -155,7 +155,8 @@ def Take_Input():
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
-				print("hello")
+				for snake in snakes:
+					print(snake.pos)
 				
 
 
