@@ -55,6 +55,7 @@ def button_pressed():
 
         button1_pos = [515, 100, 75, 50]
         button2_pos = [515, 200, 75, 50]
+        mouse = pygame.mouse.get_pos()
 
         
         if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]:
