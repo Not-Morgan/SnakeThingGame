@@ -40,8 +40,8 @@ class snake_head:
 		self.size = size
 		self.colour = color
 		self.pos = [0, 0]
-		self.pos[0] = random.randint(left_wall, right_wall)
-		self.pos[1] = random.randint(top_wall, bottom_wall)
+		self.pos[0] = random.randint(left_wall + 10, right_wall - 10)
+		self.pos[1] = random.randint(top_wall +  10, bottom_wall - 10)
 
 	def move(self, distance):
 		#move  a distance of distance
@@ -54,8 +54,10 @@ class snake_head:
 		
 		if self.pos[1] < top_wall or self.pos[1] > bottom_wall:
 			self.direction += 180
+			self.move(6)
 		if self.pos[0] < left_wall or self.pos[0] > right_wall:
 			self.direction += 180
+			self.move(6)
 			
 		#create a new tail segment
 		self.tails.append(snake_tail(self.pos, self.length))
@@ -67,10 +69,11 @@ class snake_head:
 	def food_check(self):
 		global foods
 		global score
-		for food in foods:
-			if (abs(food.pos[0] - self.pos[0]) < 5 and abs(food.pos[1] - self.pos[1]) < 5):
+		for food_thing in foods:
+			if (abs(food_thing.pos[0] - self.pos[0]) < 5 and abs(food_thing.pos[1] - self.pos[1]) < 5):
 				score += score_increment
-				foods.remove(food)
+				foods.remove(food_thing)
+				foods.append(food(5))
 				print("test")
 			
 			
@@ -99,8 +102,8 @@ class snake_tail:
 class food:
 	def __init__(self, size, colour = red):
 		self.pos = [0, 0]
-		self.pos[0] = random.randint(left_wall, right_wall)
-		self.pos[1] = random.randint(top_wall, bottom_wall)
+		self.pos[0] = random.randint(left_wall + 10, right_wall - 10)
+		self.pos[1] = random.randint(top_wall + 10, bottom_wall - 10)
 		self.colour = colour
 		self.size = size
 
