@@ -139,7 +139,11 @@ def Logic():
 	for snake in snakes:
 		snake.move(3)
 
-	button_pressed()
+	button = button_pressed()
+	if button == "Snake":
+		snakes.append(snake_head(5))
+	elif button == "Apple":
+		foods.append(food(5))
 
 def Take_Input():
 	global crashed
