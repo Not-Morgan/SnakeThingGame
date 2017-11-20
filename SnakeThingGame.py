@@ -25,7 +25,9 @@ gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
+
 score = 0
+score_increment = 5
 #set a score variable
 
 
@@ -63,9 +65,13 @@ class snake_head:
 
 
 	def food_check(self):
-		if 1 == 2:
-			print("panic")
-			#draw a new food
+		global foods
+		global score
+		for food in foods:
+			if (abs(food.pos[0] - self.pos[0]) < 5 and abs(food.pos[1] - self.pos[1]) < 5):
+				score += score_increment
+				foods.remove(food)
+				print("test")
 			
 			
 	
@@ -149,11 +155,7 @@ def Take_Input():
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
-				print("---")
-				print(snakes[0].pos)
-				print("---")
-				for tail in snakes[0].tails:
-					print(tail.pos)
+				print("hello")
 				
 
 
