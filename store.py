@@ -55,26 +55,21 @@ def button_pressed():
 
         button1_pos = [515, 100, 75, 50]
         button2_pos = [515, 200, 75, 50]
-        mouse = pygame.mouse.get_pos()
-        mouse_down = True
 
-        if pygame.mouse.get_pressed()[0] == False:
-                mouse_down = True
-                print("test")
+        mouse = pygame.mouse.get_pos()
 
         
         if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]:
-                if mouse_down and pygame.mouse.get_pressed()[0]: 
-                        print("Add a Snake")
-                        return "Snake"
-                        mouse_down = False
-                        time.sleep(5)
+                for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONDOWN: 
+                                print("Add a Snake")
+                                return "Snake"
 
         if button2_pos[0] + button2_pos[2] > mouse[0] > button2_pos[0] and button2_pos[1] + button2_pos[3] > mouse[1] > button2_pos[1]:
-                if mouse_down and pygame.mouse.get_pressed()[0]:
-                        print("Make Apple")
-                        return "Apple"
-                        mouse_down = False
+                for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                print("Make Apple")
+                                return "Apple"
         else:
                 return "None"
         
