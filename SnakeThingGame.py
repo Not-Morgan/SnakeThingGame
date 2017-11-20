@@ -71,7 +71,6 @@ class snake_head:
 			if (abs(food.pos[0] - self.pos[0]) < 5 and abs(food.pos[1] - self.pos[1]) < 5):
 				score += score_increment
 				foods.remove(food)
-				foods.append(food(5))
 				print("test")
 			
 			
@@ -140,11 +139,7 @@ def Logic():
 	for snake in snakes:
 		snake.move(3)
 
-	button = button_pressed()
-	if button == "snake":
-		snakes.append(snake(5))
-	elif button == "apple":
-		food.append(food(5))
+	button_pressed()
 
 def Take_Input():
 	global crashed
