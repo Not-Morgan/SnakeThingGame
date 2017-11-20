@@ -119,7 +119,7 @@ def Draw():
 	gameDisplay.fill(white)
 	
 	score_count(gameDisplay, score)
-	side_bar(gameDisplay, score)
+	side_bar(gameDisplay)
  
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, green, snake.pos, snake.size, 0)
@@ -138,13 +138,8 @@ def Logic():
 	#move snakes, eat food etc
 	for snake in snakes:
 		snake.move(3)
-"""
-        for snake in snakes:
-                if snake.pos[0] in range(food.pos[0] + 5, food.pos[0] - 5) and snake.pos[1] in range(food.pos[1] + 5, food.pos[1] - 5)  <- can't find food.pos
-                        score += 1
-                        somehow reposition the food
-                        
-"""	
+
+	button_pressed()
 
 def Take_Input():
 	global crashed

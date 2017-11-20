@@ -8,7 +8,9 @@ def score_count(screen, count):
         screen.blit(text,(520, 50))
 
         
-def side_bar(screen, score):
+def side_bar(screen):
+        
+        
 
         dim_red = (200,0,0)
         dim_green = (0,200,0)
@@ -22,7 +24,7 @@ def side_bar(screen, score):
         font = pygame.font.SysFont(None, 17)
         text1 = font.render("Snake", True, black)
         button2_pos = [515, 200, 75, 50]
-        text2 = font.render("Speed Up", True, black)
+        text2 = font.render("Apple", True, black)
 
         
         mouse = pygame.mouse.get_pos()
@@ -30,8 +32,7 @@ def side_bar(screen, score):
         if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]:
                 pygame.draw.rect(screen, green,(button1_pos[0],button1_pos[1],button1_pos[2],button1_pos[3]))
                 screen.blit(text1,(button1_pos[0] + button1_pos[2]/3, button1_pos[1] + button1_pos[3]/3))
-                if pygame.mouse.get_pressed()[0]:
-                        print("Add a Snake")
+                        
                        
         else:
                 pygame.draw.rect(screen, dim_green,(button1_pos[0],button1_pos[1],button1_pos[2],button1_pos[3]))
@@ -41,12 +42,29 @@ def side_bar(screen, score):
         if button2_pos[0] + button2_pos[2] > mouse[0] > button2_pos[0] and button2_pos[1] + button2_pos[3] > mouse[1] > button2_pos[1]:
                 pygame.draw.rect(screen, red,(button2_pos[0],button2_pos[1],button2_pos[2],button2_pos[3]))
                 screen.blit(text2,(button2_pos[0] + button2_pos[2]/4, button2_pos[1] + button2_pos[3]/3))
-                if pygame.mouse.get_pressed()[0]:
-                        print("Speed Up Game")
                         
         else:
                 pygame.draw.rect(screen, dim_red,(button2_pos[0],button2_pos[1],button2_pos[2],button2_pos[3]))
                 screen.blit(text2,(button2_pos[0] + button2_pos[2]/4, button2_pos[1] + button2_pos[3]/3))
+
+def button_pressed():
+
+        snake_price = 10
+        apple_price = 10
+        score_multiplier = 1.5
+        
+        if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]:
+                if pygame.mouse.get_pressed()[0]:
+                        print("Add a Snake")
+                        return "Snake"
+
+        if button2_pos[0] + button2_pos[2] > mouse[0] > button2_pos[0] and button2_pos[1] + button2_pos[3] > mouse[1] > button2_pos[1]:
+                if pygame.mouse.get_pressed()[0]:
+                        print("Make Apple")
+                        return "Apple"
+        else:
+                return "None"
+        
                 
                 
 
