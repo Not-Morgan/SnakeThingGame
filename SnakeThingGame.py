@@ -26,7 +26,7 @@ pygame.display.set_caption('Snake Thing Game')
 clock = pygame.time.Clock()
 crashed = False
 
-score = 1000
+score = 100
 score_increment = 5
 #set a score variable
 
