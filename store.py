@@ -14,9 +14,12 @@ def side_bar(screen):
 
         dim_red = (200,0,0)
         dim_green = (0,200,0)
+        
         red   = (255, 0,     0)
         green = (0,   255,   0)
+        
         black = (0,0,0)
+        
         
 
         
@@ -56,8 +59,8 @@ def side_bar(screen):
                         screen.blit(text,(button_pos[0], button_pos[1]))
                         screen.blit(price,(button_pos[0], button_pos[1] + 10))
 
-        display_buttons(button1_pos, text1, price1, green,  dim_green)
-        display_buttons(button2_pos, text2, price2, red, dim_red)
+        display_buttons(button1_pos, text1, price1, red,  dim_red)
+        display_buttons(button2_pos, text2, price2, green, dim_green)
         display_buttons(button3_pos, text3, price3, green,  dim_green)
         display_buttons(button4_pos, text4, price4, red, dim_red)
         
@@ -92,6 +95,5 @@ def button_pressed(score, price1, price2, price3, price4):
         if buttonClicked(button4_pos) and score >= price1:
                 return "Snake3"
         else:
-                return "None"
-        
+                return "None"        
                 
