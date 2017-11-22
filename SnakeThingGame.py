@@ -126,7 +126,7 @@ def Draw():
 	for snake in snakes:
 			pygame.draw.circle(gameDisplay, snake.colour, snake.pos, snake.size, 0)
 			for tail in snake.tails:
-				pygame.draw.circle(gameDisplay, snake.colour, tail.pos, snake.size, 0)
+				pygame.draw.circle(gameDisplay, snake.colour, tail.pos, snake.size - 1, 0)
 	
 	for food in foods:
 		pygame.draw.circle(gameDisplay, food.colour, food.pos, 5, 0)
