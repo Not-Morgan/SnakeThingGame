@@ -2,6 +2,7 @@ import pygame
 import random 
 import math
 from store import *
+
 white = (255, 255, 255)
 black = (0,   0,     0)
 red   = (255, 0,     0)
@@ -33,19 +34,23 @@ score_increment = 5
 
 class snake_head:
 	direction = 0
-	length = 1000
+	length = 1000 #how long tail objects last before disappearing
 
 	def __init__(self, size, color = green, speed_multiplier = 1):
 		self.tails = []
+		
 		self.size = size
 		self.colour = color
 		self.speed_multiplier = speed_multiplier
+		
 		self.pos = [0, 0]
 		self.pos[0] = random.randint(left_wall + 10, right_wall - 10)
 		self.pos[1] = random.randint(top_wall +  10, bottom_wall - 10)
 
 	def move(self, speed):
+		#increase speed if it's a fast snake
 		distance = speed * self.speed_multiplier
+		
 		#move  a distance of distance
 		self.pos[0] += int(distance * math.sin(math.radians(self.direction)))
 		self.pos[1] += int(distance * math.cos(math.radians(self.direction)))
@@ -54,6 +59,7 @@ class snake_head:
 		self.direction += random.randint(-15, 15)
 		self.direction % 360
 		
+		#bounce off walls
 		if self.pos[1] < top_wall or self.pos[1] > bottom_wall:
 			self.direction += 180
 			self.move(6)
@@ -67,7 +73,7 @@ class snake_head:
 		self.tail_check()
 		self.food_check()
 
-
+	#checks if near food then moves it and adds score
 	def food_check(self):
 		global foods
 		global score
@@ -79,13 +85,12 @@ class snake_head:
 				print("test")
 			
 			
-	
+	#checks if tails are dead and removes them
 	def tail_check(self):
 		for tail in self.tails:
 			if tail.check_if_dead() == True:
 				self.tails.remove(tail)
 				
-
 
 class snake_tail:
 	def __init__(self, snake_head_pos, last_time):
@@ -123,9 +128,9 @@ def Draw():
 	score_count(gameDisplay, score)
 	side_bar(gameDisplay)
  
-	for snake in snakes:
+	for snake in snakes: #draw each sake
 			pygame.draw.circle(gameDisplay, snake.colour, snake.pos, snake.size, 0)
-			for tail in snake.tails:
+			for tail in snake.tails: #draw tail for snake
 				pygame.draw.circle(gameDisplay, snake.colour, tail.pos, snake.size - 1, 0)
 	
 	for food in foods:
