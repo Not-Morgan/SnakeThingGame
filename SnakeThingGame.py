@@ -34,9 +34,9 @@ score_increment = 5
 class snake_head:
 	direction = 0
 	length = 1000
-	tails = []
 
 	def __init__(self, size, color = green, speed_multiplier = 1):
+		self.tails = []
 		self.size = size
 		self.colour = color
 		self.speed_multiplier = speed_multiplier
@@ -167,8 +167,9 @@ def Take_Input():
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
+				print("---")
 				for snake in snakes:
-					print(snake.pos)
+					print(snake.colour)
 				
 
 
