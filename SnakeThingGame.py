@@ -115,9 +115,6 @@ def DrawBorders():
         pygame.draw.line(gameDisplay, black, (left_wall, bottom_wall), (left_wall, top_wall), 5)
         pygame.draw.line(gameDisplay, black, (right_wall + 100, top_wall), (right_wall + 100, bottom_wall), 5)
 
-        pygame.display.update()
-        
-
 def Draw():
 	gameDisplay.fill(white)
 	
@@ -132,7 +129,7 @@ def Draw():
 	for food in foods:
 		pygame.draw.circle(gameDisplay, food.colour, food.pos, 5, 0)
 
-	
+	DrawBorders()
 
 	pygame.display.update()
 	clock.tick(fps)
@@ -167,7 +164,6 @@ foods = [food(5)]
 
 while not crashed:
 	Draw()
-	DrawBorders()
 	Logic()
 	Take_Input()
 
