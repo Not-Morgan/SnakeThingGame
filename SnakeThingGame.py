@@ -149,7 +149,7 @@ def Logic():
 		snake.move(3)
 
 		
-	button = button_pressed()
+	button = button_pressed(score, 10, 20, 50, 100)
 	if button == "Snake":
 		snakes.append(snake_head(5))
 		score -= 20

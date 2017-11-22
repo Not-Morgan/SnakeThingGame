@@ -14,11 +14,14 @@ def side_bar(screen):
 
         dim_red = (200,0,0)
         dim_green = (0,200,0)
+        
         red   = (255, 0,     0)
         green = (0,   255,   0)
+        
         black = (0,0,0)
         
-
+        
+        #define all the button positions
         
         button1_pos = [515, 100, 75, 50]
         button2_pos = [515, 200, 75, 50]
@@ -27,6 +30,7 @@ def side_bar(screen):
         
         font = pygame.font.SysFont(None, 17)
         
+        #define all the text displayed in the buttons        
         text1 = font.render("Apple", True, black)
         price1 = font.render("10 coins", True, black)
  
@@ -47,28 +51,29 @@ def side_bar(screen):
         def display_buttons(button_pos, text, price, colour, dim_colour):
                 if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
                         pygame.draw.rect(screen, colour,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #change colour
-                        screen.blit(text,(button_pos[0], button_pos[1])) #display text
-                        screen.blit(price,(button_pos[0], button_pos[1] + 10))
-                        
+                        screen.blit(text,(button_pos[0], button_pos[1])) #display product
+                        screen.blit(price,(button_pos[0], button_pos[1] + 10)) #display price
+                         
                        
                 else:
-                        pygame.draw.rect(screen, dim_colour,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) 
-                        screen.blit(text,(button_pos[0], button_pos[1]))
-                        screen.blit(price,(button_pos[0], button_pos[1] + 10))
+                        pygame.draw.rect(screen, dim_colour,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #otherwise use the regular colour
+                        screen.blit(text,(button_pos[0], button_pos[1])) #display product
+                        screen.blit(price,(button_pos[0], button_pos[1] + 10)) #display price
 
-        display_buttons(button1_pos, text1, price1, green,  dim_green)
-        display_buttons(button2_pos, text2, price2, red, dim_red)
+        #display all the buttons
+
+        display_buttons(button1_pos, text1, price1, red,  dim_red)
+        display_buttons(button2_pos, text2, price2, green, dim_green)
         display_buttons(button3_pos, text3, price3, green,  dim_green)
         display_buttons(button4_pos, text4, price4, red, dim_red)
         
 
 				
 				
-def button_pressed():
+def button_pressed(score, price1, price2, price3, price4):
 
         snake_price = 10
         apple_price = 10
-        score_multiplier = 1.5
 
         button1_pos = [515, 100, 75, 50]
         button2_pos = [515, 200, 75, 50]
@@ -78,28 +83,19 @@ def button_pressed():
         mouse = pygame.mouse.get_pos()
 
         def buttonClicked(button_pos):
-                if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]:
+                if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if the mouse is in the boundaries of the button
                         for event in pygame.event.get():
-                                if event.type == pygame.MOUSEBUTTONDOWN:
+                                if event.type == pygame.MOUSEBUTTONDOWN: #and the mouse is clicked
                                         return True
 
-        if buttonClicked(button1_pos):
+        if buttonClicked(button1_pos) and score >= price1:
                 return "Apple"
-        if buttonClicked(button2_pos):
-                return "Snake1"
-        if buttonClicked(button3_pos):
+        if buttonClicked(button2_pos) and score >= price2:
+                return "Snake"
+        if buttonClicked(button3_pos) and score >= price3:
                 return "Snake2"
-        if buttonClicked(button4_pos):
+        if buttonClicked(button4_pos) and score >= price4:
                 return "Snake3"
         else:
-                return "None"
-        
+                return "None"        
                 
-                
-
-
-
-
-
-
-
