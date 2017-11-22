@@ -64,7 +64,7 @@ def side_bar(screen):
 
 				
 				
-def button_pressed():
+def button_pressed(score, price1, price2, price3, price4):
 
         snake_price = 10
         apple_price = 10
@@ -83,23 +83,15 @@ def button_pressed():
                                 if event.type == pygame.MOUSEBUTTONDOWN:
                                         return True
 
-        if buttonClicked(button1_pos):
+        if buttonClicked(button1_pos) and score >= price1:
                 return "Apple"
-        if buttonClicked(button2_pos):
+        if buttonClicked(button2_pos) and score >= price1:
                 return "Snake1"
-        if buttonClicked(button3_pos):
+        if buttonClicked(button3_pos) and score >= price1:
                 return "Snake2"
-        if buttonClicked(button4_pos):
+        if buttonClicked(button4_pos) and score >= price1:
                 return "Snake3"
         else:
                 return "None"
         
                 
-                
-
-
-
-
-
-
-
