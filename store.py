@@ -27,12 +27,12 @@ def side_bar(screen):
         
         font = pygame.font.SysFont(None, 17)
         
-        text1 = font.render("Snake", True, black)
-        price1 = font.render("20 coins", True, black)
+        text1 = font.render("Apple", True, black)
+        price1 = font.render("10 coins", True, black)
  
         
-        text2 = font.render("Apple", True, black)
-        price2 = font.render("10 coins", True, black)
+        text2 = font.render("Snake", True, black)
+        price2 = font.render("20 coins", True, black)
 
         text3 = font.render("Snake2", True, black)
         price3 = font.render("50 coins", True, black)
@@ -84,9 +84,9 @@ def button_pressed():
                                         return True
 
         if buttonClicked(button1_pos):
-                return "Snake"
-        if buttonClicked(button2_pos):
                 return "Apple"
+        if buttonClicked(button2_pos):
+                return "Snake1"
         if buttonClicked(button3_pos):
                 return "Snake2"
         if buttonClicked(button4_pos):
