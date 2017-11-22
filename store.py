@@ -88,11 +88,11 @@ def button_pressed(score, price1, price2, price3, price4):
 
         if buttonClicked(button1_pos) and score >= price1:
                 return "Apple"
-        if buttonClicked(button2_pos) and score >= price1:
+        if buttonClicked(button2_pos) and score >= price2:
                 return "Snake1"
-        if buttonClicked(button3_pos) and score >= price1:
+        if buttonClicked(button3_pos) and score >= price3:
                 return "Snake2"
-        if buttonClicked(button4_pos) and score >= price1:
+        if buttonClicked(button4_pos) and score >= price4:
                 return "Snake3"
         else:
                 return "None"        
