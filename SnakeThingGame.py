@@ -36,14 +36,16 @@ class snake_head:
 	length = 1000
 	tails = []
 
-	def __init__(self, size, color = green):
+	def __init__(self, size, color = green, speed_multiplier = 1):
 		self.size = size
 		self.colour = color
+		self.speed_multiplier = speed_multiplier
 		self.pos = [0, 0]
 		self.pos[0] = random.randint(left_wall + 10, right_wall - 10)
 		self.pos[1] = random.randint(top_wall +  10, bottom_wall - 10)
 
-	def move(self, distance):
+	def move(self, speed):
+		distance = speed * self.speed_multiplier
 		#move  a distance of distance
 		self.pos[0] += int(distance * math.sin(math.radians(self.direction)))
 		self.pos[1] += int(distance * math.cos(math.radians(self.direction)))
@@ -135,15 +137,26 @@ def Draw():
 	clock.tick(fps)
 
 def Logic():
+	global score
+
 	#move snakes, eat food etc
 	for snake in snakes:
 		snake.move(3)
 
+		
 	button = button_pressed()
 	if button == "Snake":
 		snakes.append(snake_head(5))
+		score -= 20
+	elif button == "Snake2":
+		snakes.append(snake_head(7, blue))
+		score -= 50
+	elif button == "Snake3":
+		snakes.append(snake_head(7, red, 1.5))
+		score -= 100
 	elif button == "Apple":
 		foods.append(food(5))
+		score -= 10
 
 def Take_Input():
 	global crashed
@@ -160,7 +173,7 @@ def Take_Input():
 
 
 snakes = [snake_head(5)]
-foods = [food(5)]
+foods = [food(5), food(5), food(5), food(5), food(5)]
 
 while not crashed:
 	Draw()
