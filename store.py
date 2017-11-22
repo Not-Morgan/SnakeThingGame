@@ -4,7 +4,7 @@ import time
 def score_count(screen, count):
         black = (0,     0,      0)
         font = pygame.font.SysFont(None, 17)
-        text = font.render("Score: "+str(count), True, black)
+        text = font.render("Coins: "+str(count), True, black)
         screen.blit(text,(520, 50))
         #prints the score at the top of side bar
         
@@ -23,6 +23,7 @@ def side_bar(screen):
         button1_pos = [515, 100, 75, 50]
         font = pygame.font.SysFont(None, 17)
         text1 = font.render("Snake", True, black)
+        price1 = font.render("10 coins", True, black)
         button2_pos = [515, 200, 75, 50]
         text2 = font.render("Apple", True, black)
 
@@ -31,12 +32,13 @@ def side_bar(screen):
         
         if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]: #if mouse is inside the button
                 pygame.draw.rect(screen, green,(button1_pos[0],button1_pos[1],button1_pos[2],button1_pos[3])) #change colour
-                screen.blit(text1,(button1_pos[0] + button1_pos[2]/3, button1_pos[1] + button1_pos[3]/3)) #display text
+                screen.blit(text1,(button1_pos[0], button1_pos[1])) #display text
+                screen.blit(price1,(button1_pos[0], button1_pos[1] + 10))
                         
                        
         else:
                 pygame.draw.rect(screen, dim_green,(button1_pos[0],button1_pos[1],button1_pos[2],button1_pos[3])) 
-                screen.blit(text1,(button1_pos[0] + button1_pos[2]/3, button1_pos[1] + button1_pos[3]/3))
+                screen.blit(text1,(button1_pos[0] + 10, button1_pos[1] + 10))
 
 
         if button2_pos[0] + button2_pos[2] > mouse[0] > button2_pos[0] and button2_pos[1] + button2_pos[3] > mouse[1] > button2_pos[1]: #if mouse is inside the button
@@ -47,6 +49,8 @@ def side_bar(screen):
                 pygame.draw.rect(screen, dim_red,(button2_pos[0],button2_pos[1],button2_pos[2],button2_pos[3]))
                 screen.blit(text2,(button2_pos[0] + button2_pos[2]/4, button2_pos[1] + button2_pos[3]/3))
 
+				
+				
 def button_pressed():
 
         snake_price = 10
@@ -55,20 +59,20 @@ def button_pressed():
 
         button1_pos = [515, 100, 75, 50]
         button2_pos = [515, 200, 75, 50]
+        button3_pos = [515, 300, 75, 50]
+        button4_pos = [515, 300, 75, 50]
 
         mouse = pygame.mouse.get_pos()
 
         
         if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]:
                 for event in pygame.event.get():
-                        if event.type == pygame.MOUSEBUTTONDOWN: 
-                                print("Add a Snake")
+                        if event.type == pygame.MOUSEBUTTONDOWN:
                                 return "Snake"
 
         if button2_pos[0] + button2_pos[2] > mouse[0] > button2_pos[0] and button2_pos[1] + button2_pos[3] > mouse[1] > button2_pos[1]:
                 for event in pygame.event.get():
                         if event.type == pygame.MOUSEBUTTONDOWN:
-                                print("Make Apple")
                                 return "Apple"
         else:
                 return "None"
