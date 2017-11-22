@@ -64,16 +64,20 @@ def button_pressed():
 
         mouse = pygame.mouse.get_pos()
 
-        
-        if button1_pos[0] + button1_pos[2] > mouse[0] > button1_pos[0] and button1_pos[1] + button1_pos[3] > mouse[1] > button1_pos[1]:
-                for event in pygame.event.get():
-                        if event.type == pygame.MOUSEBUTTONDOWN:
-                                return "Snake"
+        def buttonClicked(button_pos):
+                if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]:
+                        for event in pygame.event.get():
+                                if event.type == pygame.MOUSEBUTTONDOWN:
+                                        return True
 
-        if button2_pos[0] + button2_pos[2] > mouse[0] > button2_pos[0] and button2_pos[1] + button2_pos[3] > mouse[1] > button2_pos[1]:
-                for event in pygame.event.get():
-                        if event.type == pygame.MOUSEBUTTONDOWN:
-                                return "Apple"
+        if buttonClicked(button1_pos):
+                return "Snake"
+        if buttonClicked(button2_pos):
+                return "Apple"
+        if buttonClicked(button3_pos):
+                return "Snake2"
+        if buttonClicked(button4_pos):
+                return "Snake3"
         else:
                 return "None"
         
