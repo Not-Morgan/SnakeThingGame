@@ -78,11 +78,11 @@ class snake_head:
 		global foods
 		global score
 		for food_thing in foods:
-			if (abs(food_thing.pos[0] - self.pos[0]) < 5 and abs(food_thing.pos[1] - self.pos[1]) < 5):
+			if (abs(food_thing.pos[0] - self.pos[0]) < self.size * 1.5 and abs(food_thing.pos[1] - self.pos[1]) < self.size * 1.5):
 				score += score_increment
 				foods.remove(food_thing)
 				foods.append(food(5))
-				print("test")
+				self.length += 100
 			
 			
 	#checks if tails are dead and removes them
@@ -151,13 +151,13 @@ def Logic():
 		
 	button = button_pressed(score, 10, 20, 50, 100)
 	if button == "Snake":
-		snakes.append(snake_head(5))
+		snakes.append(snake_head(6))
 		score -= 20
 	elif button == "Snake2":
-		snakes.append(snake_head(7, blue))
+		snakes.append(snake_head(8, blue))
 		score -= 50
 	elif button == "Snake3":
-		snakes.append(snake_head(7, red, 1.5))
+		snakes.append(snake_head(8, red, 1.5))
 		score -= 100
 	elif button == "Apple":
 		foods.append(food(5))
@@ -165,6 +165,7 @@ def Logic():
 
 def Take_Input():
 	global crashed
+	global score
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT: #close button is hit
@@ -172,13 +173,11 @@ def Take_Input():
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
-				print("---")
-				for snake in snakes:
-					print(snake.colour)
+				score += 20
 				
 
 
-snakes = [snake_head(5)]
+snakes = [snake_head(6)]
 foods = [food(5), food(5), food(5), food(5), food(5)]
 
 while not crashed:
