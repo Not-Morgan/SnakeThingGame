@@ -9,6 +9,8 @@ red   = (255, 0,     0)
 green = (0,   255,   0)
 blue  = (0,   0,   255)
 
+cool_colour = (178,34,34)
+
 
 display_height = 500
 display_width  = 600
@@ -67,7 +69,6 @@ class snake_head:
 				self.colour[c] += 5
 				if self.colour[c] > 255:
 					self.colour[c] = 255
-			print(self.colour)
 			if self.colour[0] + self.colour[1] + self.colour[2] == 765:
 				return "dead"
 			
@@ -180,7 +181,7 @@ def Logic():
 		snakes.append(snake_head(8, blue))
 		score -= 50
 	elif button == "Snake3":
-		snakes.append(snake_head(8, red, 1.5))
+		snakes.append(snake_head(8, cool_colour, 1.5))
 		score -= 100
 	elif button == "Apple":
 		foods.append(food(5))
