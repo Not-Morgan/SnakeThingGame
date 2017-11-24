@@ -14,11 +14,11 @@ def side_bar(screen):
 
         dim_red = (200,0,0)
         dim_green = (0,200,0)
-        dim_blue = (0,0,200)
+        dim_blue = (136,206,250)
         
         red   = (255, 0,     0)
         green = (0,   255,   0)
-        blue = (0,0,255)
+        blue = (0,191,255)
         
         black = (0,0,0)
         
@@ -40,10 +40,10 @@ def side_bar(screen):
         text2 = font.render("Snake", True, black)
         price2 = font.render("20 coins", True, black)
 
-        text3 = font.render("Snake2", True, black)
+        text3 = font.render("Super Snake", True, black)
         price3 = font.render("50 coins", True, black)
 
-        text4 = font.render("Snake3", True, black)
+        text4 = font.render("Hyper Snake", True, black)
         price4 = font.render("100 coins", True, black)
         
         
