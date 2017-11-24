@@ -215,6 +215,16 @@ def Take_Input():
 snakes = [snake_head(6)]
 foods = [food(5), food(5), food(5), food(5), food(5)]
 
+started = False
+while not started:
+	gameDisplay.fill(white)
+	pygame.draw.rect(gameDisplay, green, (230, 225, 120, 50))
+	gameDisplay.blit(label, (240, 240))
+	pygame.display.update()
+	clock.tick(fps)
+	
+		
+
 while not crashed:
 	Draw()
 	Logic()
