@@ -183,6 +183,8 @@ def Logic():
 	elif button == "Snake3":
 		snakes.append(snake_head(8, cool_colour, 1.5))
 		score -= 100
+	elif button == "Snake4":
+		snake.append(snake_head(4, (255, 165, 0), 2.5))
 	elif button == "Apple":
 		foods.append(food(5))
 		score -= 10
