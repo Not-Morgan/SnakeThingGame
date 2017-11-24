@@ -68,7 +68,7 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
         display_buttons(button2_pos, text2, price2, green, dim_green)
         display_buttons(button3_pos, text3, price3, blue,  dim_blue)
         display_buttons(button4_pos, text4, price4, red, dim_red)
-        screen.blit(font.render("Mason, Josh ", True, black),(510, 480))
+        screen.blit(font.render("Mason, Josh", True, black),(510, 480))
 
         #displays credits and the "you have won screen"
 
