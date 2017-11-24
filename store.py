@@ -48,7 +48,7 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
         text4 = font.render("Hyper Snake", True, black)
         price4 = font.render("100 coins", True, black)
 
-        screen.blit(font.render("Mason, Josh ®", True, black),(510, 480))
+        screen.blit(font.render("Mason, Josh", True, black),(510, 480))
 
         def display_buttons(button_pos, text, price, colour, dim_colour):
                 if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
