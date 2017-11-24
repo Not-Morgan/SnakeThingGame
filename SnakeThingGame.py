@@ -16,7 +16,7 @@ display_height = 500
 display_width  = 600
 
 #change to speed up of slow down game
-fps = 30
+fps = 60
 
 top_wall = 0
 bottom_wall = display_height
@@ -36,7 +36,7 @@ score_increment = 5
 
 class snake_head:
 	direction = 0
-	length = 1000 #how long tail objects last before disappearing
+	length = 500 #how long tail objects last before disappearing
 
 	def __init__(self, size, color = green, speed_multiplier = 1):
 		self.tails = []
@@ -52,7 +52,7 @@ class snake_head:
 	#does all the stuff for each tick
 	def update(self, speed):
 	
-		if self.length < 2000:
+		if self.length < 1000:
 			#increase speed if it's a fast snake
 			distance = speed * self.speed_multiplier
 			self.move(distance)
@@ -86,10 +86,14 @@ class snake_head:
 		#bounce off walls
 		if self.pos[1] < top_wall or self.pos[1] > bottom_wall:
 			self.direction += 180
-			self.move(6)
+			
+			self.pos[0] += int(distance * math.sin(math.radians(self.direction)))
+			self.pos[1] += int(distance * math.cos(math.radians(self.direction)))
 		if self.pos[0] < left_wall or self.pos[0] > right_wall:
 			self.direction += 180
-			self.move(6)
+			
+			self.pos[0] += int(distance * math.sin(math.radians(self.direction)))
+			self.pos[1] += int(distance * math.cos(math.radians(self.direction)))
 			
 		
 
@@ -104,7 +108,7 @@ class snake_head:
 				score += score_increment
 				foods.remove(food_thing)
 				foods.append(food(5))
-				self.length += 100
+				self.length += 50
 			
 			
 	#checks if tails are dead and removes them
@@ -184,7 +188,7 @@ def Logic():
 		snakes.append(snake_head(8, cool_colour, 1.5))
 		score -= 100
 	elif button == "Snake4":
-		snake.append(snake_head(4, (255, 165, 0), 2.5))
+		snakes.append(snake_head(4, (255, 165, 0), 2))
 	elif button == "Apple":
 		foods.append(food(5))
 		score -= 10
