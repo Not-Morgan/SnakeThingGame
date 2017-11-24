@@ -149,7 +149,7 @@ def Draw():
 	
 	#draws the stuff from the store file
 	score_count(gameDisplay, score)
-	side_bar(gameDisplay)
+	side_bar(gameDisplay, score)
  
 	for snake in snakes: #draw each sake
 			pygame.draw.circle(gameDisplay, snake.colour, snake.pos, snake.size, 0)
