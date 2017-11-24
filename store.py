@@ -87,7 +87,8 @@ def button_pressed(score, price1, price2, price3, price4):
         button2_pos = [515, 200, 75, 50]
         button3_pos = [515, 300, 75, 50]
         button4_pos = [515, 400, 75, 50]
-        button5_pos = [510, 480, 80, 20] #secret button for the credits, shhhh its a secret
+        buttoncredits_pos = [510, 480, 80, 20] #secret button for the credits, shhhh its a secret
+        buttoncheat_pos = [515, 0, 75, 30]
 
         mouse = pygame.mouse.get_pos()
 
@@ -106,8 +107,11 @@ def button_pressed(score, price1, price2, price3, price4):
                 return "Snake2"
         if buttonClicked(button4_pos) and score >= price4:
                 return "Snake3"
-        if buttonClicked(button5_pos):
+        if buttonClicked(buttoncheat_pos):
+                return "Snake4"
+        if buttonClicked(buttoncredits_pos):
                 webbrowser.open("https://github.com/Not-Morgan/SnakeThingGame")
+        
         else:
                 return "None"
         
