@@ -9,6 +9,8 @@ red   = (255, 0,     0)
 green = (0,   255,   0)
 blue  = (0,   0,   255)
 
+cool_colour = (178,34,34)
+
 
 display_height = 500
 display_width  = 600
@@ -40,16 +42,38 @@ class snake_head:
 		self.tails = []
 		
 		self.size = size
-		self.colour = color
+		self.colour = [color[0], color[1], color[2]]
 		self.speed_multiplier = speed_multiplier
 		
 		self.pos = [0, 0]
 		self.pos[0] = random.randint(left_wall + 10, right_wall - 10)
 		self.pos[1] = random.randint(top_wall +  10, bottom_wall - 10)
-
-	def move(self, speed):
-		#increase speed if it's a fast snake
-		distance = speed * self.speed_multiplier
+	
+	#does all the stuff for each tick
+	def update(self, speed):
+	
+		if self.length < 2000:
+			#increase speed if it's a fast snake
+			distance = speed * self.speed_multiplier
+			self.move(distance)
+		
+			#create a new tail segment
+			self.tails.append(snake_tail(self.pos, self.length))
+		
+			self.tail_check()
+			self.food_check()
+			
+			return "not dead"
+		else:
+			for c in range(len(self.colour)):
+				self.colour[c] += 5
+				if self.colour[c] > 255:
+					self.colour[c] = 255
+			if self.colour[0] + self.colour[1] + self.colour[2] == 765:
+				return "dead"
+			
+	#uses trigonomentric math to move in trigonomaly
+	def move(self, distance):
 		
 		#move  a distance of distance
 		self.pos[0] += int(distance * math.sin(math.radians(self.direction)))
@@ -67,16 +91,14 @@ class snake_head:
 			self.direction += 180
 			self.move(6)
 			
-		#create a new tail segment
-		self.tails.append(snake_tail(self.pos, self.length))
 		
-		self.tail_check()
-		self.food_check()
 
 	#checks if near food then moves it and adds score
 	def food_check(self):
 		global foods
 		global score
+		
+		#checks if it's near any food
 		for food_thing in foods:
 			if (abs(food_thing.pos[0] - self.pos[0]) < self.size * 1.5 and abs(food_thing.pos[1] - self.pos[1]) < self.size * 1.5):
 				score += score_increment
@@ -125,6 +147,7 @@ def DrawBorders():
 def Draw():
 	gameDisplay.fill(white)
 	
+	#draws the stuff from the store file
 	score_count(gameDisplay, score)
 	side_bar(gameDisplay, score)
  
@@ -146,9 +169,10 @@ def Logic():
 
 	#move snakes, eat food etc
 	for snake in snakes:
-		snake.move(3)
+		if snake.update(3) == "dead":
+			snakes.remove(snake)
 
-		
+	#checks if buttons are pressed and takes the appropriate action
 	button = button_pressed(score, 10, 20, 50, 100)
 	if button == "Snake":
 		snakes.append(snake_head(6))
@@ -157,7 +181,7 @@ def Logic():
 		snakes.append(snake_head(8, blue))
 		score -= 50
 	elif button == "Snake3":
-		snakes.append(snake_head(8, red, 1.5))
+		snakes.append(snake_head(8, cool_colour, 1.5))
 		score -= 100
 	elif button == "Apple":
 		foods.append(food(5))
@@ -174,6 +198,11 @@ def Take_Input():
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
 				score += 20
+			if event.key == pygame.K_v:
+				print("---")
+				for snake in snakes:
+					print(snake.colour)
+					print(snake.length)
 				
 
 
