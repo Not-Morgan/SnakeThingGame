@@ -12,3 +12,21 @@ TO DO List:
 -move with arrow keys zoom maybe
 -more types of snakes (prices increase exponentially)
 -realize vim is the superior editor (never)
+
+"""
+
+mouse = pygame.mouse.get_pos()
+
+font = pygame.font.SysFont(None, 17)
+button_pos = [250, 225, 100, 50]
+text = font.render("Click to Start", True, black)
+if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]:
+	pygame.draw.rect(gameDisplay, green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3]))
+	GameOn = True
+else:
+	pygame.draw.rect(gameDisplay, red,(button_pos[0],button_pos[1],button_pos[2],button_pos[3]))
+
+pygame.display.update()
+
+time.sleep(5)
+"""

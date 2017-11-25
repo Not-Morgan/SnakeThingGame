@@ -2,6 +2,7 @@ import pygame
 import random 
 import math
 from store import *
+import time
 
 white = (255, 255, 255)
 black = (0,   0,     0)
@@ -9,7 +10,7 @@ red   = (255, 0,     0)
 green = (0,   255,   0)
 blue  = (0,   0,   255)
 
-cool_colour = (178,34,34)
+cool_colour = (178,34,34) #for the secret snake
 
 
 display_height = 500
@@ -215,15 +216,22 @@ def Take_Input():
 snakes = [snake_head(6)]
 foods = [food(5), food(5), food(5), food(5), food(5)]
 
-started = False
-while not started:
+def game_intro():
+	intro = False
+	while intro:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+
 	gameDisplay.fill(white)
-	pygame.draw.rect(gameDisplay, green, (230, 225, 120, 50))
-	gameDisplay.blit(label, (240, 240))
+
 	pygame.display.update()
 	clock.tick(fps)
-	
-		
+
+
+
+game_intro()
 
 while not crashed:
 	Draw()

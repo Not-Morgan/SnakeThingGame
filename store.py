@@ -70,7 +70,7 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
         display_buttons(button4_pos, text4, price4, red, dim_red)
         screen.blit(font.render("Mason, Josh", True, black),(510, 480))
 
-        #displays credits and the "you have won screen"
+        #displays credits and the "you have won" screen
 
         if score >= 100000:
                 font = pygame.font.SysFont(None, 17)
