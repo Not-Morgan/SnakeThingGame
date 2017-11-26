@@ -242,8 +242,10 @@ def game_intro():
 		mouse = pygame.mouse.get_pos()
 		text = font.render("Click to Start", True, black)
 		title = pygame.font.SysFont(None, 50).render("Snake Thing Game", True, black)
+		subtitle = pygame.font.SysFont(None, 35).render("a game about snake farming!", True, black)
 
 		gameDisplay.blit(title,(139, 100))
+		gameDisplay.blit(subtitle, (139, 300))
 
         
 		if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
