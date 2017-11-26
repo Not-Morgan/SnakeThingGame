@@ -50,17 +50,21 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
 
         screen.blit(font.render("Mason, Josh", True, black),(510, 480))
 
+        def center_text(text, x, y):
+                screen.blit(text,(x - text.get_rect().width / 2, y))
+                
+
         def display_buttons(button_pos, text, price, colour, dim_colour):
                 if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
                         pygame.draw.rect(screen, colour,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #change colour
-                        screen.blit(text,(button_pos[0], button_pos[1])) #display product
-                        screen.blit(price,(button_pos[0], button_pos[1] + 10)) #display price
+                        center_text(text,button_pos[0] + button_pos[2] / 2, button_pos[1] + 10) #display product
+                        center_text(price,button_pos[0] + button_pos[2] / 2, button_pos[1] + 30) #display price
                          
                        
                 else:
                         pygame.draw.rect(screen, dim_colour,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #otherwise use the regular colour
-                        screen.blit(text,(button_pos[0], button_pos[1])) #display product
-                        screen.blit(price,(button_pos[0], button_pos[1] + 10)) #display price
+                        center_text(text,button_pos[0] + button_pos[2] / 2, button_pos[1] + 10) #display product
+                        center_text(price,button_pos[0] + button_pos[2] / 2, button_pos[1] + 30) #display price
 
         #display all the buttons
 

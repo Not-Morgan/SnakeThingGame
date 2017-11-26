@@ -54,7 +54,7 @@ class snake_head:
 	#does all the stuff for each tick
 	def update(self, speed):
 	
-		if self.length < 1000:
+		if self.length < 2000:
 			#increase speed if it's a fast snake
 			distance = speed * self.speed_multiplier
 			self.move(distance)
@@ -74,7 +74,7 @@ class snake_head:
 			if self.colour[0] + self.colour[1] + self.colour[2] == 765:
 				return "dead"
 			
-	#uses trigonomentric math to move in trigonomaly
+	#uses trigonometric math to move in trigonomaly
 	def move(self, distance):
 		
 		#move  a distance of distance
