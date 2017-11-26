@@ -276,7 +276,7 @@ def game_intro():
 background_sound.set_volume(1.0)                                    
 background_sound.play (-1,0,0)
 game_intro()
-background_sound.set_volume(0.4) 
+background_sound.set_volume(0.6) 
 while not crashed:
 	Draw()
 	Logic()
