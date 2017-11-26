@@ -13,6 +13,9 @@ blue  = (0,   0,   255)
 
 cool_colour = (178,34,34) #for the secret snake
 
+pygame.init()
+sound = pygame.mixer.Sound("sounds/apple.ogg")
+background_sound = pygame.mixer.Sound("sounds/background.ogg")
 
 display_height = 500
 display_width  = 600
@@ -110,6 +113,7 @@ class snake_head:
 		for food_thing in foods:
 			if (abs(food_thing.pos[0] - self.pos[0]) < self.size * 1.5 and abs(food_thing.pos[1] - self.pos[1]) < self.size * 1.5):
 				score += score_increment
+				sound.play(0,0,0)
 				foods.remove(food_thing)
 				foods.append(food(5))
 				self.length += self.length_change
@@ -232,7 +236,7 @@ def game_intro():
 				quit()
 
 		gameDisplay.fill(white)
-
+                                      
 		button_pos = [250, 225, 100, 50]
 		mouse = pygame.mouse.get_pos()
 		text = pygame.font.SysFont(None, 17).render("Click to Start", True, black)
@@ -263,7 +267,8 @@ def game_intro():
 			
 		pygame.display.update()
 		clock.tick(fps)
-
+                                      
+background_sound.play (-1,0,0)
 game_intro()
 
 while not crashed:
