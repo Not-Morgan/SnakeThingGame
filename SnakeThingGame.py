@@ -230,15 +230,13 @@ def game_intro():
 		button_pos = [250, 225, 100, 50]
 		font = pygame.font.SysFont(None, 17)
 		mouse = pygame.mouse.get_pos()
-		text = font.render("Double Click to Start", True, black)
+		text = font.render("Click to Start", True, black)
         
 		if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
 			pygame.draw.rect(gameDisplay, green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #change colour
 			gameDisplay.blit(text,(button_pos[0], button_pos[1]))
-			for event in pygame.event.get():
-				if pygame.mouse.get_pressed()[0] == True:
-					print("Start")
-					intro = True
+			if pygame.mouse.get_pressed()[0] == True:
+				intro = True
                          
                        
 		else:
