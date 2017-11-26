@@ -239,22 +239,24 @@ def game_intro():
 		text = font.render("Click to Start", True, black)
 		title = pygame.font.SysFont(None, 50).render("Snake Thing Game", True, black)
 		subtitle = pygame.font.SysFont(None, 35).render("A game about snake farming!", True, black)
+		instructions = pygame.font.SysFont(None, 20).render("Buy stuff on the right and watch your snakes eat apples", True, black)
 
 		center_text(gameDisplay, title, 300, 100)
 		center_text(gameDisplay, subtitle, 300, 300)
+		center_text(gameDisplay, instructions, 300, 400)
 		
 
         
 		if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
 			pygame.draw.rect(gameDisplay, green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #change colour
-			gameDisplay.blit(text,(button_pos[0] + 18, button_pos[1] + 16))
+			center_text(gameDisplay, text, 300, button_pos[1] + 17)
 			if pygame.mouse.get_pressed()[0] == True:
 				intro = True
                          
                        
 		else:
 			pygame.draw.rect(gameDisplay, dim_green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #otherwise use the regular colour
-			gameDisplay.blit(text,(button_pos[0] + 18, button_pos[1] + 16)) #display Click to Start
+			center_text(gameDisplay, text, 300, button_pos[1] + 17)
 
 
 			
