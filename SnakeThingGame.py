@@ -195,7 +195,7 @@ def Logic():
 		snakes.append(snake_head(8, blue, 1500))
 		score -= 50
 	elif button == "Snake3":
-		snakes.append(snake_head(8, cool_colour, 1500, 40, 1.5))
+		snakes.append(snake_head(8, cool_colour, 1500, 37, 1.5))
 		score -= 100
 	elif button == "Snake4":
 		snakes.append(snake_head(4, (255, 165, 0), 1500, 25, 2))
