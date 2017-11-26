@@ -116,7 +116,8 @@ class snake_head:
 				score += score_increment
 				sound.play(0,0,0)
 				foods.remove(food_thing)
-				foods.append(food(5))
+				if not random.randint(1, 5) == 1:
+					foods.append(food(5))
 				self.length += self.length_change
 			
 			
@@ -225,7 +226,10 @@ def Take_Input():
 				for i in range(200):
 					foods.append(food(5))
 				score = 0
-				
+			if event.key == pygame.K_n:
+				print("---")
+				print(len(foods))
+				print(len(snakes))
 
 
 snakes = [snake_head(6)]
