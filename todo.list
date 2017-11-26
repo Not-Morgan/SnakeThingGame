@@ -4,29 +4,12 @@ TO DO List:
 -layout file (done)
 -make snake head move (done)
 -make snake tail (done)
--walls that repel the snakes
--food for them to eat
--money score counter
+-walls that repel the snakes (done)
+-food for them to eat (done)
+-money score counter (done)
 -press-ey buttons to buy things (done)
--buy more space (maybe speed up the game instead?)
--move with arrow keys zoom maybe
--more types of snakes (prices increase exponentially)
+-buy more space (not done)
+-move with arrow keys zoom (not done)
+-more types of snakes (done)
 -realize vim is the superior editor (never)
 
-"""
-
-mouse = pygame.mouse.get_pos()
-
-font = pygame.font.SysFont(None, 17)
-button_pos = [250, 225, 100, 50]
-text = font.render("Click to Start", True, black)
-if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]:
-	pygame.draw.rect(gameDisplay, green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3]))
-	GameOn = True
-else:
-	pygame.draw.rect(gameDisplay, red,(button_pos[0],button_pos[1],button_pos[2],button_pos[3]))
-
-pygame.display.update()
-
-time.sleep(5)
-"""
