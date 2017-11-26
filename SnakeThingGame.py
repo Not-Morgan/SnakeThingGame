@@ -16,6 +16,7 @@ cool_colour = (178,34,34) #for the secret snake
 pygame.init()
 sound = pygame.mixer.Sound("sounds/apple.ogg")
 background_sound = pygame.mixer.Sound("sounds/background.ogg")
+button_click = pygame.mixer.Sound("sounds/button.ogg")
 
 display_height = 500
 display_width  = 600
@@ -201,6 +202,9 @@ def Logic():
 		foods.append(food(5))
 		score -= 10
 
+	if not button == "None":
+		button_click.play(0,0,0)
+
 def Take_Input():
 	global crashed
 	global score
@@ -257,6 +261,7 @@ def game_intro():
 			center_text(gameDisplay, text, 300, button_pos[1] + 17)
 			if pygame.mouse.get_pressed()[0] == True:
 				intro = True
+				button_click.play(0,0,0)
                          
                        
 		else:
