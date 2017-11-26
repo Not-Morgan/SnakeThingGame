@@ -8,6 +8,7 @@ white = (255, 255, 255)
 black = (0,   0,     0)
 red   = (255, 0,     0)
 green = (0,   255,   0)
+dim_green = (0,	200,	0)
 blue  = (0,   0,   255)
 
 cool_colour = (178,34,34) #for the secret snake
@@ -218,18 +219,36 @@ foods = [food(5), food(5), food(5), food(5), food(5)]
 
 def game_intro():
 	intro = False
-	while intro:
+	while not intro:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
 				quit()
 
-	gameDisplay.fill(white)
+		gameDisplay.fill(white)
 
-	pygame.display.update()
-	clock.tick(fps)
+		button_pos = [250, 225, 100, 50]
+		font = pygame.font.SysFont(None, 17)
+		mouse = pygame.mouse.get_pos()
+		text = font.render("Double Click to Start", True, black)
+        
+		if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
+			pygame.draw.rect(gameDisplay, green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #change colour
+			gameDisplay.blit(text,(button_pos[0], button_pos[1]))
+			for event in pygame.event.get():
+				if pygame.mouse.get_pressed()[0] == True:
+					print("Start")
+					intro = True
+                         
+                       
+		else:
+			pygame.draw.rect(gameDisplay, dim_green,(button_pos[0],button_pos[1],button_pos[2],button_pos[3])) #otherwise use the regular colour
+			gameDisplay.blit(text,(button_pos[0], button_pos[1])) #display Click to Start
 
 
+			
+		pygame.display.update()
+		clock.tick(fps)
 
 game_intro()
 
