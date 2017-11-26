@@ -56,11 +56,7 @@ class snake_head:
 	#does all the stuff for each tick
 	def update(self, speed):
 	
-<<<<<<< HEAD
-		if self.length < 2000:
-=======
 		if self.length < self.max_length:
->>>>>>> 93dd7e9c0f75270e59b9ca71944c209021303523
 			#increase speed if it's a fast snake
 			distance = speed * self.speed_multiplier
 			self.move(distance)
