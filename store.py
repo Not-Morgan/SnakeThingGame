@@ -52,7 +52,8 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
         price4 = font.render("100 coins", True, black)
 
         screen.blit(font.render("Mason, Josh", True, black),(510, 480))
-                
+
+        #define the display buttons function
 
         def display_buttons(button_pos, text, price, colour, dim_colour):
                 if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if mouse is inside the button
@@ -72,9 +73,10 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
         display_buttons(button2_pos, text2, price2, green, dim_green)
         display_buttons(button3_pos, text3, price3, blue,  dim_blue)
         display_buttons(button4_pos, text4, price4, red, dim_red)
-        screen.blit(font.render("Mason, Josh", True, black),(510, 480))
 
         #displays credits and the "you have won" screen
+
+        screen.blit(font.render("Mason, Josh", True, black),(510, 480))
 
         if score >= 100000:
                 font = pygame.font.SysFont(None, 17)
@@ -83,25 +85,26 @@ def side_bar(screen, score): #displays only buttons, credits and the you've won 
 				
 				
 def button_pressed(score, price1, price2, price3, price4):
-
-        snake_price = 10
-        apple_price = 10
-
+        
         button1_pos = [515, 100, 75, 50]
         button2_pos = [515, 200, 75, 50]
         button3_pos = [515, 300, 75, 50]
         button4_pos = [515, 400, 75, 50]
-        buttoncredits_pos = [510, 480, 80, 20] #secret button for the credits, shhhh its a secret
-        buttoncheat_pos = [515, 0, 75, 30]
+        buttoncredits_pos = [510, 480, 80, 20] 
+        buttoncheat_pos = [515, 0, 75, 30] #secret button for the cheat snake, shhhh its a secret
 
         mouse = pygame.mouse.get_pos()
 
+        #define the function of if a mouse is clicked in the boundary of the buttons
+        
         def buttonClicked(button_pos):
                 if button_pos[0] + button_pos[2] > mouse[0] > button_pos[0] and button_pos[1] + button_pos[3] > mouse[1] > button_pos[1]: #if the mouse is in the boundaries of the button
                         for event in pygame.event.get():
                                 if event.type == pygame.MOUSEBUTTONDOWN: #and the mouse is clicked
                                         return True
                 
+
+        #checks if the buttons are clicked and returns them to the main script
 
         if buttonClicked(button1_pos) and score >= price1:
                 return "Apple"
