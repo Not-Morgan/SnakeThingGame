@@ -40,12 +40,14 @@ class snake_head:
 	direction = 0
 	length = 500 #how long tail objects last before disappearing
 
-	def __init__(self, size, color = green, speed_multiplier = 1):
+	def __init__(self, size, color = green, max_length = 1000, length_change = 50, speed_multiplier = 1):
 		self.tails = []
 		
 		self.size = size
 		self.colour = [color[0], color[1], color[2]]
 		self.speed_multiplier = speed_multiplier
+		self.max_length = max_length
+		self.length_change = length_change
 		
 		self.pos = [0, 0]
 		self.pos[0] = random.randint(left_wall + 10, right_wall - 10)
@@ -54,7 +56,7 @@ class snake_head:
 	#does all the stuff for each tick
 	def update(self, speed):
 	
-		if self.length < 1000:
+		if self.length < self.max_length:
 			#increase speed if it's a fast snake
 			distance = speed * self.speed_multiplier
 			self.move(distance)
@@ -110,7 +112,7 @@ class snake_head:
 				score += score_increment
 				foods.remove(food_thing)
 				foods.append(food(5))
-				self.length += 50
+				self.length += self.length_change
 			
 			
 	#checks if tails are dead and removes them
@@ -184,13 +186,13 @@ def Logic():
 		snakes.append(snake_head(6))
 		score -= 20
 	elif button == "Snake2":
-		snakes.append(snake_head(8, blue))
+		snakes.append(snake_head(8, blue, 1500))
 		score -= 50
 	elif button == "Snake3":
-		snakes.append(snake_head(8, cool_colour, 1.5))
+		snakes.append(snake_head(8, cool_colour, 1500, 40, 1.5))
 		score -= 100
 	elif button == "Snake4":
-		snakes.append(snake_head(4, (255, 165, 0), 2))
+		snakes.append(snake_head(4, (255, 165, 0), 1500, 25, 2))
 	elif button == "Apple":
 		foods.append(food(5))
 		score -= 10
@@ -204,13 +206,17 @@ def Take_Input():
 			crashed = True
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_SPACE:
+			if event.key == pygame.K_m:
 				score += 20
 			if event.key == pygame.K_v:
 				print("---")
 				for snake in snakes:
 					print(snake.colour)
 					print(snake.length)
+			if event.key == pygame.K_b:
+				for i in range(200):
+					foods.append(food(5))
+				score = 0
 				
 
 
