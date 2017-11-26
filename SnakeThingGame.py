@@ -234,16 +234,17 @@ def game_intro():
 		gameDisplay.fill(white)
 
 		button_pos = [250, 225, 100, 50]
-		font = pygame.font.SysFont(None, 17)
 		mouse = pygame.mouse.get_pos()
-		text = font.render("Click to Start", True, black)
+		text = pygame.font.SysFont(None, 17).render("Click to Start", True, black)
 		title = pygame.font.SysFont(None, 50).render("Snake Thing Game", True, black)
 		subtitle = pygame.font.SysFont(None, 35).render("A game about snake farming!", True, black)
 		instructions = pygame.font.SysFont(None, 20).render("Buy stuff on the right and watch your snakes eat apples", True, black)
+		names = pygame.font.SysFont(None, 20).render("Proudly created by Mason and Josh", True, black)
 
 		center_text(gameDisplay, title, 300, 100)
 		center_text(gameDisplay, subtitle, 300, 300)
 		center_text(gameDisplay, instructions, 300, 400)
+		center_text(gameDisplay, names, 300, 170)
 		
 
         
