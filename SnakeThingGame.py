@@ -192,10 +192,10 @@ def Logic():
 		snakes.append(snake_head(6))
 		score -= 20
 	elif button == "Snake2":
-		snakes.append(snake_head(8, blue, 1500))
+		snakes.append(snake_head(8, blue, 1500, 44))
 		score -= 50
 	elif button == "Snake3":
-		snakes.append(snake_head(8, cool_colour, 1500, 37, 1.5))
+		snakes.append(snake_head(8, cool_colour, 1400, 22, 1.5))
 		score -= 100
 	elif button == "Snake4":
 		snakes.append(snake_head(4, (255, 165, 0), 1500, 25, 2))
@@ -223,7 +223,7 @@ def Take_Input():
 					print(snake.colour)
 					print(snake.length)
 			if event.key == pygame.K_b:
-				for i in range(200):
+				for i in range(200):	
 					foods.append(food(5))
 				score = 0
 			if event.key == pygame.K_n:
